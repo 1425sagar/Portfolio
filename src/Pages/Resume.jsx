@@ -81,7 +81,7 @@ const Resume = () => {
                 <Phone className="w-4 h-4 text-green-400" /> +91-9535126481
               </div>
               <div className="text-gray-100 text-sm flex items-center gap-2">
-                <Globe className="w-4 h-4 text-yellow-400" /> www.yourportfolio.com
+                <Globe className="w-4 h-4 text-yellow-400" /> https://sagargukkaliportfolio.vercel.app/
               </div>
             </div>
 
