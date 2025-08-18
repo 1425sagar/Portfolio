@@ -41,51 +41,52 @@ const ContactPage = () => {
       const formSubmitUrl = "https://formsubmit.co/sagarsantu0143@gmail.com@gmail.com";
 
       const submitData = new FormData();
-      submitData.append("name", formData.name);
-      submitData.append("email", formData.email);
-      submitData.append("message", formData.message);
-      submitData.append("_subject", "Pesan Baru dari Website Portfolio");
-      submitData.append("_captcha", "false");
-      submitData.append("_template", "table");
+submitData.append("name", formData.name);
+submitData.append("email", formData.email);
+submitData.append("message", formData.message);
+submitData.append("_subject", "New Message from Portfolio Website");
+submitData.append("_captcha", "false");
+submitData.append("_template", "table");
 
-      await axios.post(formSubmitUrl, submitData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+await axios.post(formSubmitUrl, submitData, {
+  headers: { "Content-Type": "multipart/form-data" },
+});
 
-      Swal.fire({
-        title: "Berhasil!",
-        text: "Pesan Anda telah berhasil terkirim!",
-        icon: "success",
-        confirmButtonColor: "#",
-        timer: 2000,
-        timerProgressBar: true,
-      });
+Swal.fire({
+  title: "Success!",
+  text: "Your message has been sent successfully!",
+  icon: "success",
+  confirmButtonColor: "#",
+  timer: 2000,
+  timerProgressBar: true,
+});
 
-      setFormData({ name: "", email: "", message: "" });
-    } catch (error) {
-      if (error.request && error.request.status === 0) {
-        // Network error but assume success (some browsers block CORS on formsubmit.co)
-        Swal.fire({
-          title: "Berhasil!",
-          text: "Pesan Anda telah berhasil terkirim!",
-          icon: "success",
-          confirmButtonColor: "#6366f1",
-          timer: 2000,
-          timerProgressBar: true,
-        });
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        Swal.fire({
-          title: "Gagal!",
-          text: "Terjadi kesalahan. Silakan coba lagi nanti.",
-          icon: "error",
-          confirmButtonColor: "#6366f1",
-        });
-      }
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+setFormData({ name: "", email: "", message: "" });
+} catch (error) {
+  if (error.request && error.request.status === 0) {
+    // Network error but assume success (some browsers block CORS on formsubmit.co)
+    Swal.fire({
+      title: "Success!",
+      text: "Your message has been sent successfully!",
+      icon: "success",
+      confirmButtonColor: "#6366f1",
+      timer: 2000,
+      timerProgressBar: true,
+    });
+    setFormData({ name: "", email: "", message: "" });
+  } else {
+    Swal.fire({
+      title: "Failed!",
+      text: "Something went wrong. Please try again later.",
+      icon: "error",
+      confirmButtonColor: "#6366f1",
+    });
+  }
+} finally {
+  setIsSubmitting(false);
+}
+};
+
 
   return (
     <div className="px-[5%] sm:px-[5%] lg:px-[10%]">
